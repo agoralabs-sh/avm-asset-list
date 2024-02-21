@@ -1,6 +1,6 @@
 import type { Router as RemixRouter } from '@remix-run/router';
 import React from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createHashRouter, Navigate } from 'react-router-dom';
 
 // components
 import Root from '@app/components/Root';
@@ -18,7 +18,7 @@ import AssetPage from '@app/pages/AssetPage';
 import SearchPage from '@app/pages/SearchPage';
 
 export default function createRouter(): RemixRouter {
-  return createBrowserRouter([
+  return createHashRouter([
     {
       children: [
         {

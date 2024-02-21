@@ -62,6 +62,10 @@ export default function createCommonConfig(): Configuration {
             from: resolve(SRC_PATH, 'data'),
             to: resolve(DIST_PATH, 'assets', 'data'),
           },
+          {
+            from: resolve(SRC_PATH, 'CNAME'),
+            to: resolve(DIST_PATH, 'CNAME'),
+          },
         ],
       }),
     ],
