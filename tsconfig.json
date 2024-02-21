@@ -20,6 +20,7 @@
     "paths": {
       "@app/components/*": ["src/components/*"],
       "@app/constants": ["src/constants"],
+      "@app/data/*": ["src/data/*"],
       "@app/enums": ["src/enums"],
       "@app/features/*": ["src/features/*"],
       "@app/fonts/*": ["src/fonts/*"],

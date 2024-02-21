@@ -55,25 +55,22 @@ export default function createCommonConfig(): Configuration {
       ],
     },
 
-    // plugins: [
-    //   new CopyWebpackPlugin({
-    //     patterns: [
-    //       {
-    //         from: resolve(SRC_PATH, 'images'),
-    //         to: resolve(DIST_PATH, 'assets', 'images'),
-    //       },
-    //       {
-    //         from: resolve(SRC_PATH, 'data'),
-    //         to: resolve(DIST_PATH, 'assets', 'data'),
-    //       },
-    //     ],
-    //   }),
-    // ],
+    plugins: [
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: resolve(SRC_PATH, 'data'),
+            to: resolve(DIST_PATH, 'assets', 'data'),
+          },
+        ],
+      }),
+    ],
 
     resolve: {
       alias: {
         ['@app/components']: resolve(SRC_PATH, 'components'),
         ['@app/constants']: resolve(SRC_PATH, 'constants'),
+        ['@app/data']: resolve(SRC_PATH, 'data'),
         ['@app/enums']: resolve(SRC_PATH, 'enums'),
         ['@app/features']: resolve(SRC_PATH, 'features'),
         ['@app/fonts']: resolve(SRC_PATH, 'fonts'),
