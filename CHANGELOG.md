@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.0.1...v1.0.2) (2024-02-21)
+
+
+### Bug Fixes
+
+* cname copied as file ([#4](https://github.com/agoralabs-sh/avm-asset-list/issues/4)) ([f082837](https://github.com/agoralabs-sh/avm-asset-list/commit/f08283719e91d10bfca09b4b36d2e019fc292674))
+
 ## [1.0.1](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.0.0...v1.0.1) (2024-02-21)
 
 
