@@ -85,6 +85,7 @@ const config: (
     case EnvironmentEnum.Development:
     default:
       devServer = {
+        historyApiFallback: true,
         port: 8080,
         watchFiles: [`${SRC_PATH}/**/*`],
       };

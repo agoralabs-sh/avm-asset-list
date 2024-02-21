@@ -21,29 +21,17 @@ const theme: Dict = extendTheme({
       800: '#ffffff',
       900: '#ffffff',
     },
-    primaryDark: {
-      50: '#F6E9FF',
-      100: '#F2DEFF',
-      200: '#EED3FF',
-      300: '#E9C8FF',
-      400: '#E5BDFF',
-      500: '#E0B0FF', // mauve
-      600: '#C875FF',
-      700: '#AF37FF',
-      800: '#9500F8',
-      900: '#6F00BA',
-    },
-    primaryLight: {
-      50: '#F59CFD',
-      100: '#F16AFD',
-      200: '#EC39FC',
-      300: '#E707FB',
-      400: '#BC03CD',
-      500: '#8D029B', // mauveine
-      600: '#7B0285',
-      700: '#66026F',
-      800: '#520159',
-      900: '#3D0143',
+    primary: {
+      50: '#a1d8af',
+      100: '#8ed0a0',
+      200: '#79c890',
+      300: '#63c080',
+      400: '#4bb771',
+      500: '#2aaf61', // green mana
+      600: '#1c8146',
+      700: '#166b39',
+      800: '#10562d',
+      900: '#0a4121',
     },
     voi: {
       50: '#d9c7f7',
@@ -57,6 +45,7 @@ const theme: Dict = extendTheme({
       800: '#441492',
       900: '#2f0e65',
     },
+    altBackground: '#303846',
   },
   config: {
     initialColorMode: 'light',
