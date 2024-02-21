@@ -10,8 +10,9 @@ import type { IAsset, INetwork } from '@app/types';
 export default function createAssetList(): IAsset[] {
   return [...voiTestAssets].reduce<IAsset[]>((acc, currentValue) => {
     const network: INetwork | null =
-      networks.find((value) => value.genesisId === currentValue.genesisID) ||
-      null;
+      networks.find(
+        (value) => value.genesisHash === currentValue.genesisHash
+      ) || null;
 
     if (
       !network ||

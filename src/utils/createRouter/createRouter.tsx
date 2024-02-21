@@ -27,7 +27,7 @@ export default function createRouter(): RemixRouter {
         },
         {
           element: <AssetPage />,
-          path: `${CHAIN_ROUTE}/:genesisID/${ASSET_ROUTE}/:assetID`,
+          path: `${CHAIN_ROUTE}/:genesisHash/${ASSET_ROUTE}/:assetID`,
         },
         {
           element: <SearchPage />,

@@ -1,3 +1,4 @@
+export type { default as IAppThunkDispatch } from './IAppThunkDispatch';
 export type { default as IAppState } from './IAppState';
 export type { default as IAsset } from './IAsset';
 export type { default as IBaseProps } from './IBaseProps';

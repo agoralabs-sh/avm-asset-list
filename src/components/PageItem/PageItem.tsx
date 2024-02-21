@@ -33,7 +33,7 @@ const PageItem: FC<IProps> = ({
       {...stackProps}
     >
       {/*label*/}
-      <Text color={defaultTextColor} fontSize="xs">
+      <Text color={defaultTextColor} fontSize="sm" w="25%">
         {label}
       </Text>
 

@@ -14,7 +14,7 @@ const networks: INetwork[] = [
   {
     canonicalName: 'Voi',
     chakraTheme: 'voi',
-    genesisId: 'voitest-v1',
+    genesisHash: 'IXnoWtviVVJW5LGivNFc0Dq14V3kqaXuK2u5OQrdVZo=',
     iconURI: VOI_ICON_URI,
     type: NetworkTypeEnum.Test,
   },

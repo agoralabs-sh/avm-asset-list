@@ -5,7 +5,7 @@ interface INetwork {
   canonicalName: string;
   chakraTheme: string;
   iconURI: string;
-  genesisId: string;
+  genesisHash: string;
   type: NetworkTypeEnum;
 }
 

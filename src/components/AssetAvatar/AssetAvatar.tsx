@@ -1,12 +1,14 @@
 import { Avatar, AvatarProps } from '@chakra-ui/react';
 import React, { FC, ReactElement } from 'react';
 
+// theme
+import { theme } from '@app/theme';
+
 // types
 import type { IAsset } from '@app/types';
 
 // utils
 import createIconFromDataUri from '@app/utils/createIconFromDataUri';
-import { theme } from '@app/theme';
 
 interface IProps extends AvatarProps {
   asset: IAsset;
