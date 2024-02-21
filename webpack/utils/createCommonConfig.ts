@@ -65,6 +65,7 @@ export default function createCommonConfig(): Configuration {
           {
             from: resolve(SRC_PATH, 'CNAME'),
             to: resolve(DIST_PATH, 'CNAME'),
+            toType: 'file',
           },
         ],
       }),
