@@ -76,6 +76,7 @@ export default function createCommonConfig(): Configuration {
         ['@app/features']: resolve(SRC_PATH, 'features'),
         ['@app/fonts']: resolve(SRC_PATH, 'fonts'),
         ['@app/hooks']: resolve(SRC_PATH, 'hooks'),
+        ['@app/images']: resolve(SRC_PATH, 'images'),
         ['@app/pages']: resolve(SRC_PATH, 'pages'),
         ['@app/selectors']: resolve(SRC_PATH, 'selectors'),
         ['@app/styles']: resolve(SRC_PATH, 'styles'),

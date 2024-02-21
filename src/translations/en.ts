@@ -7,14 +7,18 @@ const translation: IResourceLanguage = {
     copyID: 'Copy ID',
     description: `Provides a comprehensive list for assets across the AVM ecosystem, from testnets to mainnets.`,
     goBackToSearch: 'Go back to search',
+    kibisis: 'Kibisis',
     scanQRCodeToAddToWallet:
       'Scan the QR code with a compatible wallet to add the asset.',
+    license: 'Licensed under <2>MIT</2>.',
   },
   headings: {
     addToWallet: 'Add To Wallet',
     assetNotFound: 'Asset Not Found!',
     avmAssetList: 'AVM Asset List',
+    developer: 'Developer',
     information: 'Information',
+    resources: 'Resources',
   },
   labels: {
     appID: 'App ID',

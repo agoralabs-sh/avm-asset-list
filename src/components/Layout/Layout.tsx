@@ -21,9 +21,14 @@ import {
 
 // components
 import AVMIcon from '@app/components/AVMIcon';
+import Footer from '@app/components/Footer';
 
 // constants
-import { BODY_BACKGROUND_COLOR, SEARCH_ROUTE } from '@app/constants';
+import {
+  BODY_BACKGROUND_COLOR,
+  DEFAULT_GAP,
+  SEARCH_ROUTE,
+} from '@app/constants';
 
 // hooks
 import useButtonHoverBackgroundColor from '@app/hooks/useButtonHoverBackgroundColor';
@@ -53,7 +58,13 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
   const renderHeader = () => {
     if (location.pathname.includes(SEARCH_ROUTE)) {
       return (
-        <VStack alignItems="center" spacing={6} w="full">
+        <VStack
+          alignItems="center"
+          pb={DEFAULT_GAP}
+          pt={DEFAULT_GAP * 2}
+          spacing={DEFAULT_GAP}
+          w="full"
+        >
           {/*icon*/}
           <AVMIcon h={20} w={20} />
 
@@ -76,7 +87,7 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
     }
 
     return (
-      <HStack alignItems="flex-start" w="full">
+      <HStack alignItems="flex-start" p={DEFAULT_GAP / 2} w="full">
         <Tooltip label={t('captions.goBackToSearch')}>
           <IconButton
             _hover={{ bg: buttonHoverBackgroundColor }}
@@ -100,14 +111,7 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
 
       <Center as="main" backgroundColor={BODY_BACKGROUND_COLOR}>
         <Flex alignItems="center" justifyContent="center" minH="100vh" w="full">
-          <VStack
-            alignItems="center"
-            minH="100vh"
-            pt={6}
-            px={6}
-            spacing={6}
-            w="full"
-          >
+          <VStack alignItems="center" minH="100vh" spacing={0} w="full">
             {/*header*/}
             {renderHeader()}
 
@@ -115,6 +119,8 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
             <VStack
               flexGrow={1}
               maxW="500px"
+              pb={DEFAULT_GAP * 2}
+              px={DEFAULT_GAP}
               spacing={0}
               style={{
                 marginInlineStart: '0px',
@@ -123,6 +129,9 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
             >
               {children}
             </VStack>
+
+            {/*footer*/}
+            <Footer />
           </VStack>
         </Flex>
       </Center>

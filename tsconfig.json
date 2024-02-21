@@ -26,6 +26,7 @@
       "@app/features/*": ["src/features/*"],
       "@app/fonts/*": ["src/fonts/*"],
       "@app/hooks/*": ["src/hooks/*"],
+      "@app/images/*": ["src/images/*"],
       "@app/pages/*": ["src/pages/*"],
       "@app/selectors": ["src/selectors"],
       "@app/styles/*": ["src/styles/*"],

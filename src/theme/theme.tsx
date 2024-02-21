@@ -45,6 +45,7 @@ const theme: Dict = extendTheme({
       800: '#441492',
       900: '#2f0e65',
     },
+    altBackground: '#303846',
   },
   config: {
     initialColorMode: 'light',

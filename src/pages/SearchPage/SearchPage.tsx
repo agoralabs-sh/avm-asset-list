@@ -11,7 +11,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import AssetSelect from '@app/components/AssetSelect';
 
 // constants
-import { ASSET_ROUTE, CHAIN_ROUTE } from '@app/constants';
+import { ASSET_ROUTE, CHAIN_ROUTE, DEFAULT_GAP } from '@app/constants';
 
 // types
 import type { IAsset } from '@app/types';
@@ -35,6 +35,7 @@ const SearchPage: FC = () => {
       alignItems="center"
       justifyContent="flex-start"
       flexGrow={1}
+      mt={DEFAULT_GAP}
       w="full"
     >
       {/*asset select*/}

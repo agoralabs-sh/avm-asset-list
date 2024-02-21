@@ -9,10 +9,8 @@ import React, { FC } from 'react';
 // enums
 import { AssetTypeEnum } from '@app/enums';
 
-interface IProps {
-  size?: string;
-  type: AssetTypeEnum;
-}
+// types
+import type { IProps } from './types';
 
 const AssetTypeBadge: FC<IProps> = ({ size = 'sm', type }: IProps) => {
   // hooks
