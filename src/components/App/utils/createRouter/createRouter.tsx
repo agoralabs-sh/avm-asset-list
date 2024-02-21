@@ -1,5 +1,6 @@
+import type { Router as RemixRouter } from '@remix-run/router';
 import React from 'react';
-import { createBrowserRouter, Router } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 // components
 import Root from '@app/components/Root';
@@ -10,7 +11,7 @@ import { BASE_ROUTE } from '@app/constants';
 // pages
 import HomePage from '@app/pages/HomePage';
 
-export default function createRouter(): Router {
+export default function createRouter(): RemixRouter {
   return createBrowserRouter([
     {
       children: [
