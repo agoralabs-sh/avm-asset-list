@@ -19,8 +19,8 @@ import type { IAppState } from '@app/types';
 import type { IProps } from './types';
 
 // utils
+import createRouter from '@app/utils/createRouter';
 import makeStore from '@app/utils/makeStore';
-import createRouter from './utils/createRouter';
 
 const App: FC<IProps> = ({ i18next }: IProps) => {
   const store: Store<IAppState> = makeStore(

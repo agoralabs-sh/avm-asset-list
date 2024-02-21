@@ -1,6 +1,7 @@
 [
   {
     "genesisID": "voitest-v1",
+    "id": "6779767",
     "name": "Voi Incentive Asset",
     "symbol": "VIA",
     "type": "arc0200"

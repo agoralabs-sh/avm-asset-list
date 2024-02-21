@@ -1,10 +1,14 @@
+// enums
+import { AssetTypeEnum } from '@app/enums';
+
 // types
-import { AssetTypeEnum, GenesisIDEnum } from '@app/enums';
+import type INetwork from './INetwork';
 
 interface IAsset {
-  genesisID: GenesisIDEnum;
+  id: string;
   iconURI: string | null;
   name: string;
+  network: INetwork;
   symbol: string;
   type: AssetTypeEnum;
 }

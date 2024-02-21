@@ -1,0 +1,36 @@
+import {
+  ColorModeContextType,
+  Tag,
+  TagLabel,
+  useColorMode,
+} from '@chakra-ui/react';
+import React, { FC } from 'react';
+
+// enums
+import { AssetTypeEnum } from '@app/enums';
+
+interface IProps {
+  size?: string;
+  type: AssetTypeEnum;
+}
+
+const AssetTypeBadge: FC<IProps> = ({ size = 'sm', type }: IProps) => {
+  // hooks
+  const { colorMode }: ColorModeContextType = useColorMode();
+
+  switch (type) {
+    case AssetTypeEnum.ARC0200:
+    default:
+      return (
+        <Tag
+          colorScheme="green"
+          size={size}
+          variant={colorMode === 'dark' ? 'solid' : 'subtle'}
+        >
+          <TagLabel>ARC200</TagLabel>
+        </Tag>
+      );
+  }
+};
+
+export default AssetTypeBadge;

@@ -69,11 +69,13 @@ export default function createCommonConfig(): Configuration {
     resolve: {
       alias: {
         ['@app/components']: resolve(SRC_PATH, 'components'),
+        ['@app/config']: resolve(SRC_PATH, 'config'),
         ['@app/constants']: resolve(SRC_PATH, 'constants'),
         ['@app/data']: resolve(SRC_PATH, 'data'),
         ['@app/enums']: resolve(SRC_PATH, 'enums'),
         ['@app/features']: resolve(SRC_PATH, 'features'),
         ['@app/fonts']: resolve(SRC_PATH, 'fonts'),
+        ['@app/hooks']: resolve(SRC_PATH, 'hooks'),
         ['@app/pages']: resolve(SRC_PATH, 'pages'),
         ['@app/selectors']: resolve(SRC_PATH, 'selectors'),
         ['@app/styles']: resolve(SRC_PATH, 'styles'),

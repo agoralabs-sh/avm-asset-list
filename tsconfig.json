@@ -19,11 +19,13 @@
     "outDir": "dist",
     "paths": {
       "@app/components/*": ["src/components/*"],
+      "@app/config": ["src/config"],
       "@app/constants": ["src/constants"],
       "@app/data/*": ["src/data/*"],
       "@app/enums": ["src/enums"],
       "@app/features/*": ["src/features/*"],
       "@app/fonts/*": ["src/fonts/*"],
+      "@app/hooks/*": ["src/hooks/*"],
       "@app/pages/*": ["src/pages/*"],
       "@app/selectors": ["src/selectors"],
       "@app/styles/*": ["src/styles/*"],
