@@ -57,14 +57,7 @@ const AssetSelectOption: FC<IProps> = ({ asset, onClick }: IProps) => {
       {/*icon*/}
       <AssetAvatar
         asset={asset}
-        fallbackIcon={
-          <AssetIcon
-            color={primaryButtonTextColor}
-            networkTheme={asset.network.chakraTheme}
-            h={6}
-            w={6}
-          />
-        }
+        fallbackIcon={<AssetIcon color={primaryButtonTextColor} h={6} w={6} />}
         size="xs"
       />
 

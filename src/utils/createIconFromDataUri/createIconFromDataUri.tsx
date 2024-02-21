@@ -49,7 +49,7 @@ export default function createIconFromDataUri(
   svg = decodeURIComponent(data);
   document = parser.parseFromString(
     sanitize(svg, { USE_PROFILES: { svg: true, svgFilters: true } }),
-    mimeType
+    mimeType as DOMParserSupportedType
   ); // sanitize for any nastiness
   viewBox =
     document.getElementsByTagName('svg').item(0)?.getAttribute('viewBox') ||

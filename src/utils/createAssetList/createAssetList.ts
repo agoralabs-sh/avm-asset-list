@@ -4,6 +4,9 @@ import { networks } from '@app/config';
 // data
 import voiTestAssets from '@app/data/voitest-v1/assets.json';
 
+// enums
+import { AssetTypeEnum } from '@app/enums';
+
 // types
 import type { IAsset, INetwork } from '@app/types';
 
@@ -32,7 +35,7 @@ export default function createAssetList(): IAsset[] {
         name: currentValue.name,
         network,
         symbol: currentValue.symbol,
-        type: currentValue.type,
+        type: currentValue.type as AssetTypeEnum,
       },
     ];
   }, []);

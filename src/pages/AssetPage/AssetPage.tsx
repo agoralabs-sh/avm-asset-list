@@ -73,7 +73,6 @@ const AssetPage: FC = () => {
   const primaryButtonTextColor: string = usePrimaryButtonTextColor();
   // state
   const [asset, setAsset] = useState<IAsset | null>(null);
-  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   // misc
   const assets: IAsset[] = createAssetList();
@@ -147,7 +146,7 @@ const AssetPage: FC = () => {
         convertAssetToAssetAddURI(asset),
         { width: qrCodeSize },
         (renderError) => {
-          let context: CanvasRenderingContext2D;
+          let context: CanvasRenderingContext2D | null;
           let canvasCentre: number;
           let imageDrawCoords: number;
           let logoImage: HTMLImageElement;
@@ -155,8 +154,6 @@ const AssetPage: FC = () => {
 
           if (renderError) {
             logger.error(`${AssetPage.name}#${_functionName}:`, renderError);
-
-            setError(true);
 
             return;
           }
@@ -169,7 +166,12 @@ const AssetPage: FC = () => {
           logoImage.crossOrigin = 'anonymous';
 
           try {
-            context = qrCodeRef.current?.getContext('2d');
+            context = qrCodeRef.current?.getContext('2d') || null;
+
+            if (!context) {
+              throw new Error('unable to get context');
+            }
+
             context.drawImage(
               logoImage,
               imageDrawCoords,
@@ -179,8 +181,6 @@ const AssetPage: FC = () => {
             );
           } catch (error) {
             logger.error(`${AssetPage.name}#${_functionName}:`, error);
-
-            setError(true);
           }
 
           setLoading(false);
@@ -211,12 +211,7 @@ const AssetPage: FC = () => {
       <AssetAvatar
         asset={asset}
         fallbackIcon={
-          <AssetIcon
-            color={primaryButtonTextColor}
-            networkTheme={asset.network.chakraTheme}
-            h={20}
-            w={20}
-          />
+          <AssetIcon color={primaryButtonTextColor} h={20} w={20} />
         }
         size="xl"
       />

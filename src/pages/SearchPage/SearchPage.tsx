@@ -4,7 +4,6 @@ import {
   encodeURLSafe as encodeBase64URLSafe,
 } from '@stablelib/base64';
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 // components
@@ -20,7 +19,6 @@ import type { IAsset } from '@app/types';
 import createAssetList from '@app/utils/createAssetList';
 
 const SearchPage: FC = () => {
-  const { t } = useTranslation();
   const navigate: NavigateFunction = useNavigate();
   // misc
   const assets: IAsset[] = createAssetList();

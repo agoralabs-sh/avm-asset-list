@@ -1,5 +1,5 @@
 import { Avatar, AvatarProps } from '@chakra-ui/react';
-import React, { FC, ReactElement, ReactNode } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 // theme
 import { theme } from '@app/theme';

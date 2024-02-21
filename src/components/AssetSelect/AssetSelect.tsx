@@ -30,7 +30,8 @@ const AssetSelect: FC<IProps> = ({
     theme.colors.whiteAlpha['800']
   );
   // handlers
-  const handleAssetChange = (option: IOption) => onAssetChange(option.value);
+  const handleAssetChange = (option: IOption | null) =>
+    option && onAssetChange(option.value);
   const handleSearchFilter = (
     { data }: FilterOptionOption<IOption>,
     inputValue: string
@@ -68,7 +69,7 @@ const AssetSelect: FC<IProps> = ({
           height: OPTION_HEIGHT,
           width: width || '100%',
         }),
-        control: (baseStyles, state) => ({
+        control: (baseStyles) => ({
           ...baseStyles,
           backgroundColor: BODY_BACKGROUND_COLOR,
           cursor: 'pointer',
