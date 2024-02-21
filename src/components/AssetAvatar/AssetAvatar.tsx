@@ -1,5 +1,5 @@
 import { Avatar, AvatarProps } from '@chakra-ui/react';
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, ReactNode } from 'react';
 
 // theme
 import { theme } from '@app/theme';
@@ -12,7 +12,7 @@ import createIconFromDataUri from '@app/utils/createIconFromDataUri';
 
 interface IProps extends AvatarProps {
   asset: IAsset;
-  fallbackIcon?: ReactElement;
+  fallbackIcon: ReactElement;
 }
 
 const AssetAvatar: FC<IProps> = ({
@@ -21,20 +21,27 @@ const AssetAvatar: FC<IProps> = ({
   ...avatarProps
 }: IProps) => {
   // misc
-  const icon: ReactElement | null = asset.iconURI
-    ? createIconFromDataUri(asset.iconURI)
-    : null;
-  const props: AvatarProps = {
+  let props: AvatarProps = {
     ...avatarProps,
-    ...(icon
-      ? {
-          icon,
-        }
-      : {
-          bg: theme.colors.primary['500'],
-          icon: fallbackIcon,
-        }),
+    bg: theme.colors.primary['500'],
+    icon: fallbackIcon,
   };
+
+  if (asset.iconURI) {
+    if (asset.iconURI.includes('image/png')) {
+      props = {
+        ...avatarProps,
+        src: asset.iconURI,
+      };
+    }
+
+    if (asset.iconURI.includes('image/svg+xml')) {
+      props = {
+        ...avatarProps,
+        icon: createIconFromDataUri(asset.iconURI) ?? fallbackIcon,
+      };
+    }
+  }
 
   return <Avatar {...props} />;
 };

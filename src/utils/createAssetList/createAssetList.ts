@@ -27,7 +27,7 @@ export default function createAssetList(): IAsset[] {
     return [
       ...acc,
       {
-        iconURI: null,
+        iconURI: currentValue.iconURI ?? null,
         id: currentValue.id,
         name: currentValue.name,
         network,

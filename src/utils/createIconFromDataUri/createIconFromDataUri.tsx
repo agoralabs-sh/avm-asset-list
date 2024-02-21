@@ -37,7 +37,7 @@ export default function createIconFromDataUri(
     .substring('data:'.length, dataUri.indexOf(','))
     .split(';');
 
-  if (mimeType !== 'image/svg+xml') {
+  if (mimeType === 'image/svg+xml') {
     return null;
   }
 
