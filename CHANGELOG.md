@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.0.2...v1.1.0) (2024-02-22)
+
+
+### Features
+
+* display uri below qr code ([#5](https://github.com/agoralabs-sh/avm-asset-list/issues/5)) ([2bfb4df](https://github.com/agoralabs-sh/avm-asset-list/commit/2bfb4df5ff91385d343c0cd494bead55689841b4))
+
 ## [1.0.2](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.0.1...v1.0.2) (2024-02-21)
 
 

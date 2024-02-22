@@ -1,6 +1,6 @@
 {
   "name": "@agoralabs-sh/avm-asset-list",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Provides a comprehensive list for assets across the AVM ecosystem, from testnets to mainnets",
   "homepage": "https://avm-asset-list.agoralabs.sh",
   "main": "dist/indx.js",
