@@ -28,9 +28,9 @@ const Footer: FC = () => {
     <VStack
       alignItems="center"
       bg={theme.colors.altBackground}
-      px={DEFAULT_GAP * 2}
+      px={24}
       py={DEFAULT_GAP * 2}
-      spacing={DEFAULT_GAP + 2}
+      spacing={10}
       w="full"
     >
       <HStack justifyContent="space-evenly" w="full">

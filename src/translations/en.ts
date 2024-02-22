@@ -11,6 +11,7 @@ const translation: IResourceLanguage = {
     scanQRCodeToAddToWallet:
       'Scan the QR code with a compatible wallet to add the asset.',
     license: 'Licensed under <2>MIT</2>.',
+    switchColorMode: 'Switch to {{colorMode}} mode',
   },
   headings: {
     addToWallet: 'Add To Wallet',
