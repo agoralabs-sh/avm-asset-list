@@ -1,17 +1,22 @@
 import {
   Center,
+  ColorModeContextType,
   Flex,
-  Heading,
   HStack,
   IconButton,
-  Text,
+  Spacer,
   Tooltip,
+  useColorMode,
   VStack,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import {
+  IoArrowBackOutline,
+  IoMoonOutline,
+  IoSunnyOutline,
+} from 'react-icons/io5';
 import {
   Location,
   NavigateFunction,
@@ -20,7 +25,6 @@ import {
 } from 'react-router-dom';
 
 // components
-import AVMIcon from '@app/components/AVMIcon';
 import Footer from '@app/components/Footer';
 
 // constants
@@ -48,60 +52,14 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
   const title: string = useSelectTitle();
   // hooks
   const buttonHoverBackgroundColor: string = useButtonHoverBackgroundColor();
+  const { colorMode, toggleColorMode }: ColorModeContextType = useColorMode();
   const defaultTextColor: string = useDefaultTextColor();
   // handlers
   const handlerBackClick = () =>
     navigate(SEARCH_ROUTE, {
       replace: true,
     });
-  // renders
-  const renderHeader = () => {
-    if (location.pathname.includes(SEARCH_ROUTE)) {
-      return (
-        <VStack
-          alignItems="center"
-          pb={DEFAULT_GAP}
-          pt={DEFAULT_GAP * 2}
-          spacing={DEFAULT_GAP}
-          w="full"
-        >
-          {/*icon*/}
-          <AVMIcon h={20} w={20} />
-
-          {/*heading*/}
-          <Heading
-            color={defaultTextColor}
-            size="lg"
-            textAlign="center"
-            w="full"
-          >
-            {t('headings.avmAssetList')}
-          </Heading>
-
-          {/*description*/}
-          <Text color={defaultTextColor} size="md" textAlign="center" w="full">
-            {t('captions.description')}
-          </Text>
-        </VStack>
-      );
-    }
-
-    return (
-      <HStack alignItems="flex-start" p={DEFAULT_GAP / 2} w="full">
-        <Tooltip label={t('captions.goBackToSearch')}>
-          <IconButton
-            _hover={{ bg: buttonHoverBackgroundColor }}
-            aria-label="Go back"
-            color={defaultTextColor}
-            icon={<IoArrowBackOutline />}
-            onClick={handlerBackClick}
-            size="lg"
-            variant="ghost"
-          />
-        </Tooltip>
-      </HStack>
-    );
-  };
+  const handlerColorChangeClick = () => toggleColorMode();
 
   return (
     <>
@@ -113,7 +71,50 @@ const Layout: FC<IProps> = ({ children }: IProps) => {
         <Flex alignItems="center" justifyContent="center" minH="100vh" w="full">
           <VStack alignItems="center" minH="100vh" spacing={0} w="full">
             {/*header*/}
-            {renderHeader()}
+            <HStack
+              alignItems="center"
+              justifyContent="space-between"
+              p={DEFAULT_GAP / 2}
+              w="full"
+            >
+              {!location.pathname.includes(SEARCH_ROUTE) && (
+                <Tooltip label={t('captions.goBackToSearch')}>
+                  <IconButton
+                    _hover={{ bg: buttonHoverBackgroundColor }}
+                    aria-label="Go back"
+                    color={defaultTextColor}
+                    icon={<IoArrowBackOutline />}
+                    onClick={handlerBackClick}
+                    size="lg"
+                    variant="ghost"
+                  />
+                </Tooltip>
+              )}
+
+              <Spacer />
+
+              <Tooltip
+                label={t('captions.switchColorMode', {
+                  colorMode: colorMode === 'dark' ? 'light' : 'dark',
+                })}
+              >
+                <IconButton
+                  _hover={{ bg: buttonHoverBackgroundColor }}
+                  aria-label="Change color mode"
+                  color={defaultTextColor}
+                  icon={
+                    colorMode === 'dark' ? (
+                      <IoSunnyOutline />
+                    ) : (
+                      <IoMoonOutline />
+                    )
+                  }
+                  onClick={handlerColorChangeClick}
+                  size="lg"
+                  variant="ghost"
+                />
+              </Tooltip>
+            </HStack>
 
             {/*content*/}
             <VStack
