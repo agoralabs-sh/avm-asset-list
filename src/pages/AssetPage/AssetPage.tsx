@@ -12,14 +12,9 @@ import {
   decodeURLSafe as decodeBase64URLSafe,
   encode as encodeBase64,
 } from '@stablelib/base64';
-import { toCanvas } from 'qrcode';
-import React, {
-  FC,
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { sanitize } from 'dompurify';
+import { toString } from 'qrcode';
+import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -33,9 +28,6 @@ import CopyIconButton from '@app/components/CopyIconButton';
 import PageItem from '@app/components/PageItem';
 import PageSubHeading from '@app/components/PageSubHeading';
 import PageTextItem from '@app/components/PageTextItem';
-
-// constants
-import { KIBISIS_ICON_URI } from '@app/constants';
 
 // enums
 import { AssetTypeEnum } from '@app/enums';
@@ -61,8 +53,6 @@ import createAssetList from '@app/utils/createAssetList';
 import convertAssetToAssetAddURI from '@app/utils/convertAssetToAssetAddURI';
 
 const AssetPage: FC = () => {
-  const qrCodeRef: MutableRefObject<HTMLCanvasElement | null> =
-    useRef<HTMLCanvasElement | null>(null);
   const { t } = useTranslation();
   const dispatch: IAppThunkDispatch = useDispatch<IAppThunkDispatch>();
   const { assetID, genesisHash } = useParams();
@@ -73,7 +63,9 @@ const AssetPage: FC = () => {
   const primaryButtonTextColor: string = usePrimaryButtonTextColor();
   // state
   const [asset, setAsset] = useState<IAsset | null>(null);
+  const [assetAddURI, setAssetAddURI] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [svgString, setSvgString] = useState<string | null>(null);
   // misc
   const assets: IAsset[] = createAssetList();
   const qrCodeSize: number = 400;
@@ -137,57 +129,33 @@ const AssetPage: FC = () => {
   }, [assetID, genesisHash]);
   useEffect(() => {
     const _functionName: string = 'useEffect([asset, qrCodeRef])';
+    let _assetAddURI: string;
 
-    if (asset && qrCodeRef.current) {
+    if (asset) {
       setLoading(true);
 
-      toCanvas(
-        qrCodeRef.current,
-        convertAssetToAssetAddURI(asset),
-        { width: qrCodeSize },
-        (renderError) => {
-          let context: CanvasRenderingContext2D | null;
-          let canvasCentre: number;
-          let imageDrawCoords: number;
-          let logoImage: HTMLImageElement;
-          let logoSize: number;
+      _assetAddURI = convertAssetToAssetAddURI(asset);
 
-          if (renderError) {
-            logger.error(`${AssetPage.name}#${_functionName}:`, renderError);
+      toString(
+        _assetAddURI,
+        {
+          type: 'svg',
+          width: qrCodeSize,
+        },
+        (error, uri) => {
+          if (error) {
+            logger.error(`${AssetPage.name}#${_functionName}:`, error);
 
             return;
           }
 
-          canvasCentre = qrCodeSize / 2;
-          logoSize = qrCodeSize * 0.16;
-          imageDrawCoords = canvasCentre - logoSize / 2;
-          logoImage = new Image(logoSize, logoSize);
-          logoImage.src = KIBISIS_ICON_URI;
-          logoImage.crossOrigin = 'anonymous';
-
-          try {
-            context = qrCodeRef.current?.getContext('2d') || null;
-
-            if (!context) {
-              throw new Error('unable to get context');
-            }
-
-            context.drawImage(
-              logoImage,
-              imageDrawCoords,
-              imageDrawCoords,
-              logoSize,
-              logoSize
-            );
-          } catch (error) {
-            logger.error(`${AssetPage.name}#${_functionName}:`, error);
-          }
-
+          setAssetAddURI(_assetAddURI);
+          setSvgString(uri);
           setLoading(false);
         }
       );
     }
-  }, [asset, qrCodeRef]);
+  }, [asset]);
 
   if (!asset) {
     return (
@@ -271,27 +239,38 @@ const AssetPage: FC = () => {
         </Text>
 
         {/*qr code*/}
-        <Box position="relative">
-          {loading && (
-            <Stack
-              alignItems="center"
-              h={qrCodeSize}
-              justifyContent="center"
-              position="absolute"
-              w={qrCodeSize}
-            >
-              <Spinner
-                color={theme.colors.primary['500']}
-                emptyColor={defaultTextColor}
-                size="sm"
-                speed="0.65s"
-                thickness="1px"
-              />
-            </Stack>
-          )}
+        {svgString && !loading ? (
+          <Box
+            dangerouslySetInnerHTML={{
+              __html: sanitize(svgString, {
+                USE_PROFILES: { svg: true, svgFilters: true },
+              }),
+            }}
+          />
+        ) : (
+          <Stack
+            alignItems="center"
+            h={qrCodeSize}
+            justifyContent="center"
+            position="absolute"
+            w={qrCodeSize}
+          >
+            <Spinner
+              color={theme.colors.primary['500']}
+              emptyColor={defaultTextColor}
+              size="sm"
+              speed="0.65s"
+              thickness="1px"
+            />
+          </Stack>
+        )}
 
-          <canvas ref={qrCodeRef} />
-        </Box>
+        {/*uri*/}
+        {assetAddURI && (
+          <Code borderRadius="md" fontSize="sm" wordBreak="break-word">
+            {assetAddURI}
+          </Code>
+        )}
       </VStack>
     </VStack>
   );
