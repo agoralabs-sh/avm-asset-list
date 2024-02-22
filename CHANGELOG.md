@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.1.0...v1.2.0) (2024-02-22)
+
+
+### Features
+
+* add color mode switch ([#6](https://github.com/agoralabs-sh/avm-asset-list/issues/6)) ([d9be770](https://github.com/agoralabs-sh/avm-asset-list/commit/d9be770e31656c088821c3879e59c309a42d7ac0))
+
 # [1.1.0](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.0.2...v1.1.0) (2024-02-22)
 
 
