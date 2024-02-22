@@ -51,6 +51,7 @@ import type { IAppThunkDispatch, IAsset, ILogger } from '@app/types';
 // utils
 import createAssetList from '@app/utils/createAssetList';
 import convertAssetToAssetAddURI from '@app/utils/convertAssetToAssetAddURI';
+import { DEFAULT_GAP } from '@app/constants';
 
 const AssetPage: FC = () => {
   const { t } = useTranslation();
@@ -172,7 +173,8 @@ const AssetPage: FC = () => {
       alignItems="center"
       justifyContent="flex-start"
       flexGrow={1}
-      spacing={4}
+      pb={DEFAULT_GAP}
+      spacing={DEFAULT_GAP}
       w="full"
     >
       {/*icon*/}
@@ -189,6 +191,9 @@ const AssetPage: FC = () => {
         {asset.name}
       </Heading>
 
+      {/*information heading*/}
+      <PageSubHeading text={t('headings.information')} />
+
       {/*information*/}
       <VStack
         alignItems="flex-start"
@@ -196,9 +201,6 @@ const AssetPage: FC = () => {
         spacing={0}
         w="full"
       >
-        {/*heading*/}
-        <PageSubHeading text={t('headings.information')} />
-
         {/*symbol*/}
         <PageTextItem label={t('labels.symbol')} value={asset.symbol} />
 
@@ -218,16 +220,16 @@ const AssetPage: FC = () => {
         />
       </VStack>
 
-      {/*actions*/}
+      {/*add to wallet heading*/}
+      <PageSubHeading text={t('headings.addToWallet')} />
+
+      {/*add to wallet*/}
       <VStack
         alignItems="center"
         justifyContent="flex-start"
-        spacing={2}
+        spacing={DEFAULT_GAP}
         w="full"
       >
-        {/*heading*/}
-        <PageSubHeading text={t('headings.addToWallet')} />
-
         {/*description*/}
         <Text
           color={defaultTextColor}
