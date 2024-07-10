@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.2.0...v1.3.0) (2024-07-10)
+
+
+### Features
+
+* add new taco coin, phase 2 points token and unit token ([#7](https://github.com/agoralabs-sh/avm-asset-list/issues/7)) ([3dc2498](https://github.com/agoralabs-sh/avm-asset-list/commit/3dc24984842a942101286dfb50b9643c9e9b6687))
+
 # [1.2.0](https://github.com/agoralabs-sh/avm-asset-list/compare/v1.1.0...v1.2.0) (2024-02-22)
 
 
